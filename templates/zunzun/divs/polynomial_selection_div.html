@@ -1,0 +1,20 @@
+<DIV ID="polynomialSelection" align='center' name="hideable_div" style="display:none;">
+<B>Polynomial selection</B><BR><BR>
+{% ifequal dimensionality '2' %}
+    Select the highest order term for the polynomial equation.
+    <br>
+    <br>
+    {{ mainForm.polynomialOrderX2D }}
+{% else %}
+    Select the highest order terms for the polynomial equation.
+    <br>
+    <br>
+    <TABLE BORDER="1" CELLPADDING="10" ALIGN="CENTER">
+    <TR><TD>
+    {{ mainForm.polynomialOrderX3D }} Highest term for first independent data (X)
+    <BR>
+    {{ mainForm.polynomialOrderY3D }} Highest term for second independent data (Y)
+    </TD></TR>
+    </TABLE>
+{% endifequal %}
+</DIV>

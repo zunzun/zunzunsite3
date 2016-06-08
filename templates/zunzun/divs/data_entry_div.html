@@ -1,0 +1,30 @@
+<DIV ID="dataEntry" align='center' name="hideable_div" style="display:none;">
+<B>Text data editor</B><BR><BR>
+Cut-and-paste text or edit data here
+<br>
+<br>
+<TABLE BORDER="1" CELLPADDING="10">
+<TR>
+    <TD ALIGN=LEFT>
+    {{ mainForm.commaConversion }}
+    </TD>
+</TR>
+</TABLE>
+
+{% if mainForm.weightedFittingPossibleFlag %}
+<br>
+<TABLE BORDER="1" CELLPADDING="10">
+<TR>
+    <TD ALIGN=LEFT>
+    {{ mainForm.weightedFittingChoice }}
+    </TD>
+</TR>
+</TABLE>
+{% endif %}
+
+<BR>
+{{ mainForm.textDataEditor }}
+<BR>
+<BR>
+<INPUT TYPE="BUTTON" onClick="javascript:this.form.textDataEditor.value=''" VALUE="Clear All Text">
+</DIV>

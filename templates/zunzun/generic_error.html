@@ -1,0 +1,27 @@
+{% extends "zunzun/generic_page_template.html" %}
+
+{% block title %}
+    ZunZunSite3 Curve Fitting and Surface Fitting
+{% endblock %}
+
+{% block icon_links %}
+    <link rel="icon" href="/temp/static_images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/temp/static_images/favicon.ico" type="image/x-icon">
+{% endblock %}
+
+{% block body_contents %}
+<div align='center'>
+<br>
+<b>Error</b><br><br>
+
+<TABLE ALIGN="CENTER">
+
+<TR><TD ALIGN='right'>Error :</TD><TD ALIGN='left'>{{error}}</TD></TR>
+
+</table>
+
+<br><br>
+Please close this page, correct any errors, and try again.
+
+</div>
+{% endblock body_contents %}

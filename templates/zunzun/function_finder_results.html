@@ -1,0 +1,88 @@
+{% extends "zunzun/generic_page_template.html" %}
+
+{% block title %}
+    ZunZunSite3 - {{ dimensionality }}D Function Finder Results
+{% endblock %}
+
+{% block icon_links %}
+    <link rel="icon" href="/temp/static_images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/temp/static_images/favicon.ico" type="image/x-icon">
+{% endblock %}
+
+{% block body_contents %}
+
+<div align='center'>
+
+<br>
+
+{% if previousSelectorRank %}
+<a href='/FunctionFinderResults/{{ dimensionality }}/?RANK={{ previousSelectorRank }}&unused={{ uniqueTime }}'>Previous Set Of Equations</a>
+{% endif %}
+
+{% if previousSelectorRank %}
+	{% if nextSelectorRank %}
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	{% endif %}
+{% endif %}
+
+{% if nextSelectorRank %}
+<a href='/FunctionFinderResults/{{ dimensionality }}/?RANK={{ nextSelectorRank }}&unused={{ uniqueTime }}'>Next Set Of Equations</a>
+{% endif %}
+
+<br><br>
+<font size=-1><b>Hint:</b> If you have too many Polyfunctionals you can go back, turn them off, and run again.</font>
+<br>
+
+<table border='1'>
+{% for equationData in equationDataForDjangoTemplate %}
+	<tr>
+
+	{% for graphLocation in equationData.graphWebSiteLocations %}
+		<td style='border-top: none; border-right: none; border-left: none;'><img src='{{ graphLocation }}'></td>
+	{% endfor %}
+
+	<td style='border-top: none; border-right: none; border-left: none;' align='center'>
+	<br>
+	<b>Rank {{ equationData.rank }}</b>
+	<br>
+	<br>
+	{{ equationData.fittingTarget }}: {{ equationData.fittingTargetValue }}
+	{{ equationData.rmseString }}
+	<br>Equation Family: {{ equationData.moduleName }}
+	<br><b>{{ equationData.displayName }}</b>
+	<br>
+	<br>
+	{{ equationData.displayHTML }}
+	<br>
+	<br>
+	<a href='/Equation/{{ dimensionality }}/{{ equationData.URLQuotedModuleName }}/{{ equationData.URLQuotedDisplayName }}/?RANK={{ equationData.rank }}&unused={{ uniqueTime }}' target='_blank'>Go to this equation</a>
+	<br>
+	<br>
+	</td>
+	
+	</tr>
+{% endfor %}
+
+</table>
+
+<br>
+
+{% if previousSelectorRank %}
+<a href='/FunctionFinderResults/{{ dimensionality }}/?RANK={{ previousSelectorRank }}&unused={{ uniqueTime }}'>Previous Set Of Equations</a>
+{% endif %}
+
+{% if previousSelectorRank %}
+	{% if nextSelectorRank %}
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	{% endif %}
+{% endif %}
+
+{% if nextSelectorRank %}
+<a href='/FunctionFinderResults/{{ dimensionality }}/?RANK={{ nextSelectorRank }}&unused={{ uniqueTime }}'>Next Set Of Equations</a>
+{% endif %}
+
+<br><br><br>
+
+</div>
+
+{% endblock body_contents %}

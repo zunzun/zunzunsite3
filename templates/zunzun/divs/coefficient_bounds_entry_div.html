@@ -1,0 +1,19 @@
+<DIV ID="coefficientBoundsEntry" align='center' name="hideable_div" style="display:none;">
+<B>Coefficients Bounds</B><BR><BR>
+Here you can enter coefficient upper and lower bounds. Leave the<br>
+entry fields blank to let the coefficients fit without bounds.<br>
+<br>
+Note that holding a coefficient constant overrides these bounds.
+<br>
+<br>
+<br>
+{{ equationInstance.GetDisplayHTML }}
+<br>
+<br>
+<TABLE BORDER="0">
+<TR><TD></TD><TD ALIGN=CENTER> &nbsp; Upper &nbsp; <br> &nbsp; Bound &nbsp; </TD><TD ALIGN=CENTER> &nbsp; Lower &nbsp; <br> &nbsp; Bound &nbsp; </TD></TR>
+{% for item in coefficientBoundsTemplateRequirement %}
+<TR><TD ALIGN=RIGHT><div name='nameOfCoefficientBound'>{{ item.0 }} &nbsp; &nbsp;</div></TD><TD ALIGN=LEFT>{{ item.1 }}</TD><TD ALIGN=LEFT>{{ item.2 }}</TD></TR>
+{% endfor %}
+</TABLE>
+</DIV>

@@ -1,0 +1,32 @@
+<DIV ID="graphSize" align='center' name="hideable_div" style="display:none;">
+<B>{% ifequal dimensionality '3' %}Animation and {% endifequal %}Graph size</B>
+<BR><BR>
+Here you can choose the size of the graphs. Smaller size files load quickly,<BR>with less resolution while large files show more resolution but load more slowly.
+<br>
+<br>
+<TABLE BORDER="1" CELLPADDING="5">
+<TR>
+<TD>
+    <TABLE BORDER="0"><tr><td align='left'>
+{{ mainForm.graphSize }}
+    </td></tr></TABLE>
+</TD>
+</TR>
+<TR><TD><B>Graph Size</B></TD></TR>
+</TABLE>
+{% ifequal dimensionality '3' %}
+<BR>
+<BR>
+<TABLE BORDER="1" CELLPADDING="5">
+<TR>
+<TD>
+    <TABLE BORDER="0"><tr><td align='left'>
+{{ mainForm.animationSize }}
+    
+    </td></tr></TABLE>
+</TD>
+</TR>
+<TR><TD><B>Animation Size</B></TD></TR>
+</TABLE>
+{% endifequal %}
+</DIV>

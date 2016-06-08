@@ -1,0 +1,76 @@
+{% extends "zunzun/generic_page_template.html" %}
+
+{% block title %}
+    ZunZunSite3 - {{ dimensionality }}D Function Finder
+{% endblock %}
+
+{% block icon_links %}
+    <link rel="icon" href="/temp/static_images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/temp/static_images/favicon.ico" type="image/x-icon">
+{% endblock %}
+
+{% block body_contents %}
+
+<FORM ACTION="/FunctionFinder__1___/{{ dimensionality }}/" METHOD='POST'>
+
+{# MENU --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- #}
+{# MENU --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- #}
+{# MENU --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- #}
+{# MENU --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{# menu item titles ------------------------------------------------------- #}
+<TABLE ALIGN="CENTER"><TR>
+    <TD ALIGN="CENTER"><BASEFONT SIZE="3">Pulldown Menu</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+</TR>
+<TR>
+    <TD ALIGN="CENTER"><BASEFONT SIZE="3">
+        <select ID="s1" size=1>
+        <option>
+        <option value='introDiv' SELECTED>Introduction
+        <option value='dataEntry'>Text Data Editor
+        <option value='fittingTarget'>Fitting Target
+        <option value='dataLabels'>Data Labels For Graphs
+        <option value='smoothnessControl'>Smoothness Control
+        <option value='equationFamilyInclusion'>Equation Family Inclusion
+        <option value='extendedEquationTypes'>Extended Equation Types
+        </select>
+    </TD>
+    <TD>&nbsp;</TD>
+    <TD><BASEFONT SIZE="3">
+        <INPUT TYPE="SUBMIT" VALUE="Submit">
+    </TD>
+    <TD>&nbsp;</TD>
+    <TD><BASEFONT SIZE="3"><A HREF="https://github.com/zunzun/zunzunsite3" TARGET="_parent">Home</A></TD>
+</TR>
+</TABLE>
+<br>
+
+
+{# DIVS --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- #}
+{# DIVS --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- #}
+{# DIVS --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- #}
+{# DIVS --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{# introduction div ------------------------------------------------------- #}
+<div ID="introDiv" align='center' name="hideable_div">
+<B><FONT SIZE="+1">Introduction</FONT></B><BR><BR>
+Please select an option from the pull-down menu above.<br>
+<br>
+<b>Advice:</b> Most users should turn off the Polyfunctional family<br>
+of equations and set the Smoothness Control to a small value<br>
+to start, then increase the Smoothness Control value as needed.
+</div>
+
+{% include "zunzun/divs/data_entry_div.html" %}
+{% include "zunzun/divs/fitting_target_div.html" %}
+{% include "zunzun/divs/data_labels_div.html" %}
+{% include "zunzun/divs/smoothness_control_div.html" %}
+{% include "zunzun/divs/equation_family_inclusion_div.html" %}
+{% include "zunzun/divs/extended_equation_types_control_div.html" %}
+
+</form>
+{% endblock body_contents %}

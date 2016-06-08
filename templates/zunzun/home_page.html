@@ -1,0 +1,261 @@
+{% extends "zunzun/generic_page_template.html" %}
+{% block title %}
+Online Curve Fitting and Surface Fitting at ZunZunSite3
+{% endblock %}
+
+{% block additional_jquery_ready_code %}
+    $('#javaScriptDetectedDiv').css('display', 'block');
+{% endblock %}
+
+{% block icon_links %}
+    <link rel="icon" href="/temp/static_images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/temp/static_images/favicon.ico" type="image/x-icon">
+{% endblock %}
+
+{% block body_contents %}
+
+<noscript>
+  <center><br><br>This web site requires JavaScript to function properly.<br><br>Please enable JavaScript and reload the web page.</center>
+</noscript>
+
+<div ID="javaScriptDetectedDiv" style="display:none;">
+
+{# menu item titles ------------------------------------------------------- #}
+{# menu item titles ------------------------------------------------------- #}
+<TABLE ALIGN="CENTER">
+<TR>
+<TD ALIGN="CENTER"><BASEFONT SIZE="3"><B>2D Functions</B></TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="CENTER"><BASEFONT SIZE="3"><B>3D Functions</B></TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="CENTER"><BASEFONT SIZE="3"><B>Characterizers</B></TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="CENTER"><BASEFONT SIZE="3"><B>Site Related</B></TD>
+</TR>
+<TR>
+
+{# equation menus ------------------------------------------------------- #}
+{# equation menus ------------------------------------------------------- #}
+{% for dim_to_map in dim_to_map_list %}
+    <TD ALIGN="CENTER"><BASEFONT SIZE="3">
+    <select ID="s{{ forloop.counter }}" size=1>
+    <option>
+    <option value='introDiv' SELECTED>Introduction
+    <option value='spline{{ dim_to_map.0 }}DDiv'>Spline Interpolation
+    <option value='userDefinedFunction{{ dim_to_map.0 }}DDiv'>User Defined Function
+    <option value='functionFinder{{ dim_to_map.0 }}DDiv'>Function Finder
+    {% for equationClassPropertyList in dim_to_map.1 %}{% if equationClassPropertyList.firstItemInSubmoduleFlag %}<option value="A{{ dim_to_map.0 }}DA{{ equationClassPropertyList.submoduleName }}">{{ equationClassPropertyList.submoduleName }}{% endif %}{% endfor %}
+    <option value='allEquations{{ dim_to_map.0 }}DDiv' SELECTED>List All Equations
+    </select>
+    </TD>
+    <TD>&nbsp;</TD>
+{% endfor %}
+
+{# characterize data menu ------------------------------------------------------- #}
+{# characterize data menu ------------------------------------------------------- #}
+<TD ALIGN="CENTER"><BASEFONT SIZE="3">
+<select ID="s3" size=1>
+<option>
+<option value='introDiv' SELECTED>Introduction
+<option value='characterizeDataDiv'>Characterizers
+</select>
+</TD>
+
+<TD>&nbsp;</TD>
+
+{# about, etc menu ------------------------------------------------------- #}
+{# about, etc menu ------------------------------------------------------- #}
+<TD ALIGN="CENTER"><BASEFONT SIZE="3">
+<select ID="s4" size=1>
+<option>
+<option value='introDiv' SELECTED>Introduction
+<option value='aboutDiv'>About
+<option value='dedicationDiv'>Dedication
+<option value='historicalNoteDiv'>Historical Note
+<option value='serverloadDiv'>Server Load
+</select>
+</TD>
+
+</TR>
+</TABLE>
+<br>
+
+{# DIVS --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- #}
+{# DIVS --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- #}
+{# DIVS --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- #}
+{# DIVS --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{# introduction div ------------------------------------------------------- #}
+{# introduction div ------------------------------------------------------- #}
+<div ID="introDiv" align='center' name="hideable_div">
+<B><FONT SIZE="+1">Welcome to ZunZunSite3</FONT></B><BR><BR>
+Here you can curve fit and surface fit your 2D and 3D data online with<br>
+a rich set of error histograms, error plots, curve plots, surface plots,<br>
+contour plots, auto-generated source code, and PDF file output.<br>
+<BR>
+If you're looking for high quality curve fitting and surface fitting, this is<br>
+the site for you! Source code is available at the <a href="https://github.com/zunzun/pyeq3">GitHub Code Repository</a>.<br>
+<BR>
+To begin, select an equation family from the drop-down menus above or try<BR>
+the "Function Finders" to help determine the best curve fit for your data.<BR>
+<BR><BR><HR WIDTH="50%" ALIGN="CENTER"><BR>
+
+<TABLE ALIGN="CENTER">
+  <TR>
+    <TD ALIGN="CENTER"><A HREF="http://www.ubuntu.com/server"><IMG SRC="/temp/static_images/UbuntuLogo.png" BORDER="0" ALT="Powered by Ubuntu Linux"></A></TD>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+    <TD ALIGN="CENTER"><A HREF="http://www.python.org/"><IMG SRC="/temp/static_images/tbtfpython.png" BORDER="0" ALT="Written in Python"></A></TD>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+    <TD ALIGN="CENTER"><A HREF="http://www.djangoproject.com/"><IMG SRC="/temp/static_images/django.png" BORDER="0" ALT="Using the Django Web Framework"></A></TD>
+  </TR>
+  <TR>
+    <TD ALIGN="CENTER">Powered by<br><A HREF="http://www.ubuntu.com/server">Ubuntu Linux</A></TD>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+    <TD ALIGN="CENTER">Written in<br><A HREF="http://www.python.org/">Python</A></TD>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+    <TD ALIGN="CENTER">Using the<br><A HREF="http://www.djangoproject.com/">Django Web Framework</A></TD>
+  </TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD ALIGN="CENTER"><a href="http://wingware.com/"><img src="/temp/static_images/wingware_logo.png" BORDER="0" alt="Wingware"></A></TD>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+    <TD ALIGN="CENTER"><A HREF="http://matplotlib.sourceforge.net/"><IMG SRC="/temp/static_images/matplotlib.png" BORDER="0" ALT="Plotted by Matplotlib"></A></TD>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+    <TD ALIGN="CENTER"><a href="http://www.reportlab.com/software/opensource/"><img src="/temp/static_images/ReportLabLogo.png" BORDER="0" alt="PDF Generation by ReportLab"></A></TD>
+  </TR>
+  <TR>
+    <TD ALIGN="CENTER">Coded with<br><A HREF="http://wingware.com/">Wingware</A></TD>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+    <TD ALIGN="CENTER">Plotted by<br><A HREF="http://matplotlib.sourceforge.net/">Matplotlib</A></TD>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+    <TD ALIGN="CENTER">PDF Generation by<br><A HREF="http://www.reportlab.com/opensource/">Report Lab</A></TD>
+  </TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+  </TR>
+</TABLE>
+
+<TABLE ALIGN="CENTER">
+  <TR>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+    <TD ALIGN="CENTER"><a href="http://groups.google.com/group/zunzun_dot_com/"><img src="/temp/static_images/groups_logo.gif" BORDER="0" alt="ZunZunSite3 Google Group"></A></TD>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+  </TR>
+  <TR>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+    <TD ALIGN="CENTER">ZunZunSite3's<A HREF="http://groups.google.com/group/zunzun_dot_com/"> Google<br>discussion group</A></TD>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+    <TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+  </TR>
+</TABLE>
+</div>
+
+
+{# data characterizers div ------------------------------------------------------- #}
+{# data characterizers div ------------------------------------------------------- #}
+<DIV ID="characterizeDataDiv" align='center' name="hideable_div" style="display:none;">
+<b>Characterize Data </b><br><br>
+<table>
+<tr><td ALIGN="CENTER"><a HREF="CharacterizeData/1/">Characterize 1D (X) Data</a></td></tr>
+<tr><td ALIGN="CENTER"><a HREF="CharacterizeData/2/">Characterize 2D (XY) Data</a></td></tr>
+<tr><td ALIGN="CENTER"><a HREF="CharacterizeData/3/">Characterize 3D (XYZ) Data</a></td></tr>
+<tr><td> &nbsp;</td></tr>
+<tr><td ALIGN="CENTER"><a HREF="StatisticalDistributions/1/">Fit Data To Statistical Distributions</a></td></tr>
+</table>
+</DIV>
+
+
+{# function finders div ------------------------------------------------------- #}
+{# function finders div ------------------------------------------------------- #}
+{% for dim_to_map in dim_to_map_list %}
+    <DIV ID="functionFinder{{ dim_to_map.0 }}DDiv"  align='center' name="hideable_div" style="display:none;">
+    <b>{{ dim_to_map.0 }}D Function Finder </b><br><br>
+    <a HREF="FunctionFinder__1___/{{ dim_to_map.0 }}/">{{ dim_to_map.0 }}D Function Finder</a>
+    </DIV>
+{% endfor %}
+
+
+{# 'site related' div ------------------------------------------------------- #}
+{# 'site related' div ------------------------------------------------------- #}
+{% include "zunzun/divs/about.html" %}
+{% include "zunzun/divs/historical_note.html" %}
+{% include "zunzun/divs/server_load.html" %}
+{% include "zunzun/divs/dedication.html" %}
+
+
+{# spline divs ----------------------------------------------------------------- #}
+{# spline divs ----------------------------------------------------------------- #}
+{% for dim_to_spline in dim_to_spline_list %}
+<div ID ="spline{{ dim_to_spline.0 }}DDiv" align='center' name="hideable_div" style="display:none;">
+<b>{{ dim_to_spline.0 }}D Spline Interpolation</b>
+<br><br>
+<table>
+<tr>
+<td align='right'><a href='Equation/{{ dim_to_spline.0 }}/Spline/Spline/'>{{ dim_to_spline.1.GetDisplayName }} {{ dim_to_spline.0 }}D</a></td>
+<td> &nbsp; </td>
+<td align='left'>{{ dim_to_spline.1.GetDisplayHTML }}</td>
+</tr>
+<tr><td align='right'> &nbsp; </td><td> &nbsp; </td><td align='left'> &nbsp; </td></tr>
+</table>
+</div>
+{% endfor %}
+
+
+{# UDF divs ----------------------------------------------------------------- #}
+{# UDF divs ----------------------------------------------------------------- #}
+{% for dim_to_map in dim_to_map_list %}
+<div ID ="userDefinedFunction{{ dim_to_map.0 }}DDiv" align='center' name="hideable_div" style="display:none;">
+<b>{{ dim_to_map.0 }}D User Defined Function</b>
+<br><br>
+<table>
+<tr>
+<td align='right'><a href='Equation/{{ dim_to_map.0 }}/UserDefinedFunction/UserDefinedFunction/'>User Defined Function {{ dim_to_map.0 }}D</a></td>
+<td> &nbsp; </td>
+{% ifequal dim_to_map.0 '2' %}
+    <td align='left'>y = user defined function</td>
+{% else %}
+    <td align='left'>z = user defined function</td>
+{% endifequal %}
+</tr>
+<tr><td align='right'> &nbsp; </td><td> &nbsp; </td><td align='left'> &nbsp; </td></tr>
+</table>
+</div>
+{% endfor %}
+
+
+{# equation classes divs ------------------------------------------------------- #}
+{# equation classes divs ------------------------------------------------------- #}
+{% for dim_to_map in dim_to_map_list %}{% for equationClassProperties in dim_to_map.1 %}{% if equationClassProperties.firstItemInSubmoduleFlag %}<div ID ="A{{ dim_to_map.0 }}DA{{ equationClassProperties.submoduleName }}" align='center' name="hideable_div" style="display:none;"><b>{{ dim_to_map.0 }}D {{ equationClassProperties.submoduleName }}</b><br><br><table>{% endif %}<tr><td nowrap align='right'><a href='Equation/{{ dim_to_map.0 }}/{{ equationClassProperties.submoduleName }}/{{ equationClassProperties.url_quote_name }}/'>{{ equationClassProperties.name }} {{ dim_to_map.0 }}D</a></td><td> &nbsp; </td><td align='left'>{% if equationClassProperties.multiLineHtmlFlag %}<br>{% endif %}{{ equationClassProperties.HTML }}{% if equationClassProperties.webCitationLink %} &nbsp; <a href='{{ equationClassProperties.webCitationLink }}' target='_blank'>[web citation]</a>{% endif %}{% if equationClassProperties.multiLineHtmlFlag %}<br>{% endif %}</td></tr>{% if equationClassProperties.lastItemInSubmoduleFlag %}</table></div>{% else %}{% if equationClassProperties.lastItemInExtendedNameFlag %}<tr><td align='right'> &nbsp; </td><td> &nbsp; </td><td align='left'> &nbsp; </td></tr><tr><td colspan=3><hr width='50%'></td></tr><tr><td align='right'> &nbsp; </td><td> &nbsp; </td><td align='left'> &nbsp; </td></tr>{% endif %}{% endif %}{% endfor %}{% endfor %}
+
+
+{# lists of all equations divs ------------------------------------------------------- #}
+{# lists of all equations divs ------------------------------------------------------- #}
+{% for dim_to_map in dim_to_map_list %}
+<div ID ="allEquations{{ dim_to_map.0 }}DDiv" align='center' name="hideable_div" style="display:none;">
+<b>All {{ dim_to_map.0 }}D Equations</b><br><br>
+<table>
+<tr>
+<td align='right'><a HREF="AllEquations/{{ dim_to_map.0 }}/Standard/">List Of All {{ dim_to_map.0 }}D Equations</a></td><td>-</td><td align='left'>Standard Versions Only</td>
+</tr>
+<tr>
+<td align='right'><a HREF="AllEquations/{{ dim_to_map.0 }}/All/">List Of All {{ dim_to_map.0 }}D Equations</a></td><td>-</td><td align='left'>Including Extended Versions</td>
+</tr>
+</table>
+</div>
+{% endfor %}
+</div>
+
+{% endblock body_contents %}

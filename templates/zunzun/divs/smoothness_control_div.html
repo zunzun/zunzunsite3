@@ -1,0 +1,13 @@
+<DIV ID="smoothnessControl" align='center' name="hideable_div" style="display:none;">
+<CENTER><B>Smoothness Control</B><BR><BR>
+
+Select the maximum number of coefficients for the function finder.
+<BR>Equations with fewer coefficients are generally smoother.
+<br>
+<br>
+{% ifequal dimensionality '2' %}
+	{{ mainForm.smoothnessControl2D }}
+{% else %}
+	{{ mainForm.smoothnessControl3D }}
+{% endifequal %}
+</DIV>

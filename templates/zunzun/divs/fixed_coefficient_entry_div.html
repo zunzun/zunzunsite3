@@ -1,0 +1,18 @@
+<DIV ID="fixedCoefficientEntry" align='center' name="hideable_div" style="display:none;">
+<B>Hold Coefficients Constant</B><BR><BR>
+Here you can enter values to hold coefficients constant during fitting.<br>
+Leave the entry field blank to let the coefficient fit normally.<br>
+<br>
+Note that coefficient bounds are overridden by holding a coefficient constant.
+<br>
+<br>
+<br>
+{{ equationInstance.GetDisplayHTML }}
+<br>
+<br>
+<TABLE BORDER="0">
+{% for item in fixedCoefficientTemplateRequirement %}
+<TR><TD ALIGN=RIGHT><div name='nameOfFixedCoefficient'>{{ item.0 }} &nbsp; &nbsp;</div></TD><TD ALIGN=LEFT>{{ item.1 }}</TD></TR>
+{% endfor %}
+</TABLE>
+</DIV>

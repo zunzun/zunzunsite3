@@ -1,0 +1,18 @@
+<DIV ID="estimatedCoefficientEntry" align='center' name="hideable_div" style="display:none;">
+<B>Estimated Initial Coefficients</B><BR><BR>
+Here you can enter values for initial parameter estimates.<br>
+<br>
+Few users will need this section, as the site estimates initial<br>
+parameters using the Differential Evolution genetic algorithm<br>
+for both nonlinear equations and non-Gaussian fitting targets.
+<br>
+<br>
+{{ equationInstance.GetDisplayHTML }}
+<br>
+<br>
+<TABLE BORDER="0">
+{% for item in estimatedCoefficientTemplateRequirement %}
+<TR><TD ALIGN=RIGHT><div name='nameOfEstimatedCoefficient'>{{ item.0 }} &nbsp; &nbsp;</div></TD><TD ALIGN=LEFT>{{ item.1 }}</TD></TR>
+{% endfor %}
+</TABLE>
+</DIV>
