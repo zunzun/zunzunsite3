@@ -1,5 +1,5 @@
 You will need to install scipy, matplotlib, django, bs4, imagemagick
-gifsickle and reportlab to run this software.  On Debian and Ubuntu,
+gifsicle and reportlab to run this software.  On Debian and Ubuntu,
 you can run the following:
 
 apt-get install python3-scipy python3-matplotlib
