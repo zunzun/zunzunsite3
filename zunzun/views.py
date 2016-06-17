@@ -398,8 +398,11 @@ def FeedbackView(request):
 def HomePageView(request):
     import os, sys, time
 
+    # whenever the home page is loaded, clear expired sessions
+    SessionStore().clear_expired()
+
     # whenever the home page is loaded, make sure there is
-    # space in the temp directory for newly created files
+    # space in the temp directory for newly created files    
     totalDirSize = 0
     dirInfo = []
     for item in os.listdir(settings.TEMP_FILES_DIR):
