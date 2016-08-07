@@ -16,7 +16,7 @@ pip3 install pyeq3
 You can now cd to the project's top-level directory and
 run the django development server with the command:
 
-python manage.py runserver
+python3 manage.py runserver
 
 and open the url http://127.0.0.1:8000/ in a browser. Cool!
 
