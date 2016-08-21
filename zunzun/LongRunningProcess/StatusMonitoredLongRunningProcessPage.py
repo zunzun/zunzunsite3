@@ -221,6 +221,9 @@ You must provide any weights you wish to use.
                 specialExceptionFileText = report.name
                 pageElements.append(reportlab.platypus.Preformatted(report.name, styles['SmallCode']))
                 pageElements.append(reportlab.platypus.XPreformatted('<br/><br/><br/>', styles['CenteredBodyText']))
+
+                if report.name == "Coefficient and Fit Statistics":
+                    report.stringList = report.stringList[1:]
                 
                 joinedString = str('\n').join(report.stringList)
                 
@@ -280,7 +283,7 @@ You must provide any weights you wish to use.
                             rebuiltText += newLine[100:] + '\n'
                         else:
                             rebuiltText += newLine + '\n'
-
+                            
                 pageElements.append(reportlab.platypus.Preformatted(rebuiltText, styles['SmallCode']))
 
                 pageElements.append(reportlab.platypus.PageBreak())
