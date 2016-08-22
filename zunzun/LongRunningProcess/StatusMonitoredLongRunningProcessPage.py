@@ -181,7 +181,6 @@ You must provide any weights you wish to use.
             myTableStyle = [('ALIGN', (1,1), (-1,-1), 'CENTER'),
                             ('VALIGN', (1,1), (-1,-1), 'MIDDLE')]
 
-            #largeLogoImage = reportlab.platypus.Image(io.StringIO(open(os.path.join(settings.TEMP_FILES_DIR, 'static_images/logo.png'), 'rb').read()), 25 * scale * 3, 25 * scale * 3)
             largeLogoImage = reportlab.platypus.Image(os.path.join(settings.TEMP_FILES_DIR, 'static_images/logo.png'), 25 * scale * 3, 25 * scale * 3)
 
             tableRow = [largeLogoImage,
@@ -222,7 +221,7 @@ You must provide any weights you wish to use.
                 pageElements.append(reportlab.platypus.Preformatted(report.name, styles['SmallCode']))
                 pageElements.append(reportlab.platypus.XPreformatted('<br/><br/><br/>', styles['CenteredBodyText']))
 
-                if report.name == "Coefficient and Fit Statistics":
+                if report.stringList[0] == '</pre>': # corrects fit statistics not in PDF
                     report.stringList = report.stringList[1:]
                 
                 joinedString = str('\n').join(report.stringList)
