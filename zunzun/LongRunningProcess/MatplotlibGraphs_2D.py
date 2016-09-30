@@ -91,7 +91,7 @@ def CommonPlottingCode(in_WidthInPixels, in_HeightInPixels, in_XName, in_YName, 
     
     # for smallest graphs, do not "text brand" - looks ugly
     if in_WidthInPixels > 320:
-        ax.text(relativeWidthPos, relativeHeightPos, 'zunzunsite',
+        ax.text(relativeWidthPos, relativeHeightPos, 'zunzunsite3',
                 fontsize= 'xx-small',
                 family= 'monospace',
                 horizontalalignment='center',
