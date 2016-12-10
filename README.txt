@@ -4,8 +4,7 @@ you can run the following:
 
 apt-get install python3-scipy python3-matplotlib
 apt-get install python3-django python3-bs4
-apt-get install python3-reportlab python3-reportlab-accel
-apt-get install imagemagick gifsicle
+apt-get install python3-reportlab imagemagick gifsicle
 
 then install the pyeq3 fitting code with these commands:
 
