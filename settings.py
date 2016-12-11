@@ -61,6 +61,7 @@ USE_I18N = False
 SECRET_KEY = 'super-secret-key'
 
 # List of callables that know how to import templates from various sources.
+# older versions of django use TEMPLATE_*
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
@@ -78,10 +79,15 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'urls'
 
 ROOT_PATH = os.path.dirname(__file__)
+
+# older versions of django use TEMPLATE_*
 TEMPLATE_DIRS = (
     os.path.join(ROOT_PATH, 'templates'),
 )
 
+# newer versions of django use TEMPLATES below, not the older TEMPLATE_* above
+# this file has both for compatibility although this gives a (harmless) warning
+# because both coding styles are present in the same settings.py file
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

@@ -3,7 +3,7 @@ from django.conf.urls import *
 import zunzun.views
 import settings
 
-try:
+try: # newer versions of django
     urlpatterns = patterns('',
         (r"^$", zunzun.views.HomePageView),
         
@@ -21,7 +21,7 @@ try:
         (r"^AllEquations/([23])/(.+)/$", zunzun.views.AllEquationsView),
         (r"^Feedback/$", zunzun.views.FeedbackView),
     )
-except:
+except: # older versions of django
     urlpatterns = [
         url(r"^$", zunzun.views.HomePageView),
         url(r"^StatusAndResults/", zunzun.views.StatusView),
@@ -34,4 +34,4 @@ except:
         url(r"^EvaluateAtAPoint/$", zunzun.views.EvaluateAtAPointView),
         url(r"^AllEquations/([23])/(.+)/$", zunzun.views.AllEquationsView),
         url(r"^Feedback/$", zunzun.views.FeedbackView),
-]
+]   
