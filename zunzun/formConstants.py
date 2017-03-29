@@ -153,7 +153,7 @@ opacityChoices = [['0', '0 percent'],
                   ['100','100 percent']]
 
 # want this specific order
-targetList = ['SSQABS', 'ODR', 'SSQREL', 'ABSABS', 'ABSREL', 'PEAKABS', 'PEAKREL', 'AIC', 'BIC']
+targetList = ['SSQABS', 'ODR', 'SSQREL', 'ABSABS', 'LNQREL', 'ABSREL', 'PEAKABS', 'PEAKREL', 'AIC', 'BIC']
 fittingTargetChoices = []
 for target in targetList:
     fittingTargetChoices.append([target, 'Lowest ' + pyeq3.IModel.IModel.fittingTargetDictionary[target]])
