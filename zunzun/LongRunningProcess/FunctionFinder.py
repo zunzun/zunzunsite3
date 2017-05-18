@@ -1,7 +1,3 @@
-
-
-
-
 import inspect, time, math, random, multiprocessing, queue, copy, sys, os
 
 import numpy
@@ -123,6 +119,7 @@ class FunctionFinder(StatusMonitoredLongRunningProcessPage.StatusMonitoredLongRu
         self.dataObject.Max2DPolynomialOrder = len(zunzun.formConstants.polynomialOrder2DChoices) - 1
         self.dataObject.Max3DPolynomialOrder = len(zunzun.formConstants.polynomialOrder3DChoices) - 1
         self.dataObject.maxCoeffs = eval("int(self.boundForm.cleaned_data['smoothnessControl" + str(self.dataObject.dimensionality) + "D'])")
+        self.dataObject.maxOrEqual = self.boundForm.cleaned_data['smoothnessExactOrMax']
         return ''
 
 
@@ -149,9 +146,14 @@ class FunctionFinder(StatusMonitoredLongRunningProcessPage.StatusMonitoredLongRu
         self.dataObject.equationdataCache = externalDataCache
 
         # smoothness control
-        if len(self.dataObject.equation.GetCoefficientDesignators()) > self.dataObject.maxCoeffs:
-            self.fit_skip_count += 1
-            return
+        if self.dataObject.maxOrEqual == 'M': # Max
+            if len(self.dataObject.equation.GetCoefficientDesignators()) > self.dataObject.maxCoeffs:
+                self.fit_skip_count += 1
+                return
+        else: # Equal
+            if len(self.dataObject.equation.GetCoefficientDesignators()) != self.dataObject.maxCoeffs:
+                self.fit_skip_count += 1
+                return
 
         # check for ncoeffs > nobs
         if len(self.dataObject.equation.GetCoefficientDesignators()) > self.dataLength:

@@ -1,7 +1,3 @@
-
-
-
-
 import inspect
 import pyeq3
 
@@ -239,6 +235,9 @@ smoothnessControl3DChoices = [['1', '1'],
                               ['23', '23'],
                               ['24', '24'],
                               ['25', '25']]
+
+smoothnessExactOrMaxChoices = [['M','Use value as Maximum number of parameters'],
+                               ['E','Use value as Exact number of parameters']]
 
 splineOrderChoices = [['1','1: Linear'],
                       ['2','2: Quadratic'],
